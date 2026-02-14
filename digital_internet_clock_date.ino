@@ -10,6 +10,28 @@
 // I/O --> G25 (kanan)
 // VCC --> 3V3 (Kanan)
 
+//| Modul   | Fungsi | GPIO   | Ambil dari |
+//| ------- | ------ | ------ | ---------- |
+//| MAX7219 | DIN    | GPIO23 | **Kiri**   |
+//| MAX7219 | CS     | GPIO5  | **Kiri**   |
+//| MAX7219 | CLK    | GPIO18 | **Kiri**   |
+//| MAX7219 | VCC    | 5V     | **Kiri**   |
+//| MAX7219 | GND    | GND    | **Kiri**   |
+//| Buzzer  | I/O    | GPIO25 | **Kiri**   |
+//| Buzzer  | VCC    | 3.3V   | **Kiri**   |
+//| Buzzer  | GND    | GND    | **Kiri**   |
+
+//| Modul   | Fungsi | GPIO   | Ambil dari |
+//| ------- | ------ | ------ | ---------- |
+//| MAX7219 | DIN    | GPIO23 | **Kanan**  |
+//| MAX7219 | CS     | GPIO5  | **Kanan**  |
+//| MAX7219 | CLK    | GPIO18 | **Kanan**  |
+//| MAX7219 | VCC    | 5V     | **Kanan**  |
+//| MAX7219 | GND    | GND    | **Kanan**  |
+//| Buzzer  | I/O    | GPIO25 | **Kanan**  |
+//| Buzzer  | VCC    | 3.3V   | **Kanan**  |
+//| Buzzer  | GND    | GND    | **Kanan**  |
+
 #include <WiFi.h>
 #include <time.h>
 #include <MD_Parola.h>
@@ -442,18 +464,20 @@ void loop() {
   unsigned long now = millis();
 
   // ===== BUZZER EVENT =====
-  if (timeinfo.tm_min != lastMinute) {
-    lastMinute = timeinfo.tm_min;
-//    beep(2000, 80);           // bunyi tiap menit
-    // jamMelodyCute();
-    playTakeOnMe();
-  }
+//  if (timeinfo.tm_min != lastMinute) {
+//    lastMinute = timeinfo.tm_min;
+////    beep(2000, 80);           // bunyi tiap menit
+//    // jamMelodyCute();
+////    playTakeOnMe();
+//  }
 
   if (timeinfo.tm_hour != lastHour) {
     lastHour = timeinfo.tm_hour;
-    beep(2500, 120);          // bunyi jam
-    delay(100);
-    beep(2500, 120);
+//    beep(2500, 120);          // bunyi jam
+//    delay(100);
+//    beep(2500, 120);
+
+    playTakeOnMe();
   }
 
   // ===== MODE JAM =====
